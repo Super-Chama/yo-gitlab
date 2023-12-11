@@ -1,11 +1,13 @@
-import { load } from "https://deno.land/std@0.208.0/dotenv/mod.ts";
+// import { load } from "https://deno.land/std@0.208.0/dotenv/mod.ts";
 
-const env = await load();
+// const env = await load({
+//   allowEmptyValues: true,
+// });
 
 export const envObj = {
-  GITLAB_HOST: env["GITLAB_HOST"],
-  GITLAB_TOKEN: env["GITLAB_TOKEN"],
-  OPENAI_API_KEY: env["OPENAI_API_KEY"],
-  GITLAB_USERNAME: env["GITLAB_USERNAME"],
-  GITLAB_WEBHOOK_TOKEN: env["GITLAB_WEBHOOK_TOKEN"],
+  GITLAB_HOST: Deno.env.get("GITLAB_HOST") || "",
+  GITLAB_TOKEN: Deno.env.get("GITLAB_TOKEN") || "",
+  OPENAI_API_KEY: Deno.env.get("OPENAI_API_KEY") || "",
+  GITLAB_USERNAME: Deno.env.get("GITLAB_USERNAME") || "",
+  GITLAB_WEBHOOK_TOKEN: Deno.env.get("GITLAB_WEBHOOK_TOKEN") || "",
 } as const;
